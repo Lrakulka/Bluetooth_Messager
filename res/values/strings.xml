@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Searching_Bluetooth_Devices</string>
+	<string name="bl_devices">BlueTooth Devices</string>
+	<string name="bl_le_devices">BlueTooth Low Level Devices</string>
+	<string name="bt_start">Start Seaching</string>
+	<string name="bt_stop">Stop Searching</string>
+	<string name="device_not_select">Device not selected</string>
+	<string name="bt_start_discoverability">Enabling discoverability</string>
+	<string name="bt_stop_discoverability">Disable discoverability</string>
+	<string name="bt_send">Send</string>
+	<string name="Force_searching_start">Start search hidden devices</string>
+	<string name="Force_searching_stop">Stop search hidden devices</string>
+</resources>

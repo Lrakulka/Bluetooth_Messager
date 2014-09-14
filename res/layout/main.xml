@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bl_devices"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="156dp"
+        android:layout_height="115dp"
+        android:layout_y="26dp" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_x="190dp"
+        android:text="@string/device_not_select"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="180dp"
+        android:layout_y="95dp"
+        android:onClick="onclick"
+        android:text="@string/bt_start" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="270dp"
+        android:layout_y="50dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        android:layout_x="3dp"
+        android:layout_y="199dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="0dp"
+        android:layout_y="450dp"
+        android:ems="10"
+        android:gravity="bottom"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="244dp"
+        android:layout_y="446dp"
+        android:onClick="onSend"
+        android:text="@string/bt_send" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_x="4dp"
+        android:layout_y="143dp"
+        android:text="@string/Force_searching_start" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_x="181dp"
+        android:layout_y="144dp"
+        android:onClick="onClickDiscoverability"
+        android:text="@string/bt_start_discoverability" />
+
+</AbsoluteLayout>
