@@ -9,7 +9,6 @@ import android.bluetooth.BluetoothSocket;
 
 public class ClientThread extends Thread {
     private final BluetoothSocket mmSocket;
-    private final BluetoothDevice mmDevice;
     private Channel channel;
     
     public ClientThread(BluetoothDevice device, Channel channel) {
@@ -17,7 +16,6 @@ public class ClientThread extends Thread {
         // Use a temporary object that is later assigned to mmSocket,
         // because mmSocket is final
         BluetoothSocket tmp = null;
-        mmDevice = device;
  
         // Get a BluetoothSocket to connect with the given BluetoothDevice
         try {
@@ -41,7 +39,8 @@ public class ClientThread extends Thread {
             } catch (IOException closeException) { }
             return;
         }
- 
+        if(channel.isAlive())
+    		channel.cancel();
         // Do work to manage the connection (in a separate thread)
         channel.start(mmSocket);
     }

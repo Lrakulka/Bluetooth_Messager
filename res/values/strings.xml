@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Searching_Bluetooth_Devices</string>
+    <string name="app_name">Bluetooth_Messager</string>
 	<string name="bl_devices">BlueTooth Devices</string>
 	<string name="bl_le_devices">BlueTooth Low Level Devices</string>
 	<string name="bt_start">Start Seaching</string>

@@ -74,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_x="4dp"
         android:layout_y="143dp"
+        android:onClick="onGlobalSearch"
         android:text="@string/Force_searching_start" />
 
     <Button

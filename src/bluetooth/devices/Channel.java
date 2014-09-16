@@ -6,10 +6,7 @@ import java.io.OutputStream;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class Channel extends Thread {
     private BluetoothSocket mmSocket;

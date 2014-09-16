@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("HandlerLeak") public class MainActivity extends Activity {
 	
@@ -55,9 +56,15 @@ import android.widget.TextView;
         // For control button @Send@ from other thread
         Handler hButton = new Handler(){        	
         	public void handleMessage(android.os.Message msg){
-        		if(msg.what == 0)
+        		if(msg.what == 0){
+        			if(!serverThread.isAlive())
+        				serverThread.start();
         			buttonSend.setEnabled(false);
-        		else buttonSend.setEnabled(true);
+        		}
+        		else {
+        			buttonSend.setEnabled(true);
+        			serverThread.cancel();
+        		}
         	}
         };
         // For control edit from other thread
@@ -70,7 +77,6 @@ import android.widget.TextView;
         blDevices = new BluetoothDevices(this, list1);
         channel = new Channel(hEdit, hButton);
         serverThread = new ServerThread(channel);
-        serverThread.start();
         list1.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -90,8 +96,18 @@ import android.widget.TextView;
 					text.setText(device.getAddress() + " Bonded State none");
 			}
 		});
+        if (!BluetoothAdapter.getDefaultAdapter().isEnabled()) {
+		    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+		    startActivityForResult(enableBtIntent, 2);
+        }
+        if(BluetoothAdapter.getDefaultAdapter().isEnabled())
+        	serverThread.start();
+        else return;
     }
       
+    public void onGlobalSearch(View v){
+    	Toast.makeText(this, "This part of the project have not even begun to be written", 5).show();
+    }
     public void onSend(View v){
     	if(edit.getTextSize() != 0)
     		channel.write(edit.getText().toString().getBytes());
@@ -103,8 +119,7 @@ import android.widget.TextView;
     		searching = true;
     		button.setText(R.string.bt_stop);
     		progBar.setVisibility(ProgressBar.VISIBLE);
-	    	if(!blDevices.find()){
-	    		
+	    	if(!blDevices.find()){	    		
 	    		edit.setText("Enable Bluetooth and try again");
 	    		onclick(null);
 	    	}
@@ -117,6 +132,7 @@ import android.widget.TextView;
     }
     
     public void onClickDiscoverability(View v){
+    	/*
     	if(isDiscoverability){
     		//disable not works
     		Intent discoverableIntent = new
@@ -126,13 +142,13 @@ import android.widget.TextView;
     		sendBroadcast(discoverableIntent);
     		isDiscoverability = false;
     		buttonDiscoverability.setText(R.string.bt_start_discoverability);
-    	}else{
+    	}else*/{
     		Intent discoverableIntent = new
     				Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
 			discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
 			startActivity(discoverableIntent);
     		isDiscoverability = true;
-    		buttonDiscoverability.setText(R.string.bt_stop_discoverability);
+    		//buttonDiscoverability.setText(R.string.bt_stop_discoverability);
     	}
     }
 }

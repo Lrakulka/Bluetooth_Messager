@@ -40,6 +40,8 @@ public class ServerThread extends Thread {
             // If a connection was accepted
             if (socket != null) {
                 // Do work to manage the connection (in a separate thread)
+            	if(channel.isAlive())
+            		channel.cancel();
                 channel.start(socket);
                 try {
 					mmServerSocket.close();
